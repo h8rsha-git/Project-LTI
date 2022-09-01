@@ -1,0 +1,251 @@
+<div id="main_1">
+  <div class="card">
+    <h2>Payment</h2>
+
+    <div class="col-50">
+      <label for="fname">Accepted Cards</label>
+
+      <div class="icon-container">
+        <i class="fa fa-cc-visa" style="color: navy"></i>
+        <i class="fa fa-cc-amex" style="color: blue"></i>
+        <i class="fa fa-cc-mastercard" style="color: red"></i>
+        <i class="fa fa-cc-discover" style="color: orange"></i>
+      </div>
+    </div>
+
+    <button class="accordion">Credit Card</button>
+    <div class="panel">
+      <br />
+      <form #paymentForm="ngForm" (ngSubmit)="payment(paymentForm)">
+        <label for="cname">Name on Card</label><br />
+        <input
+          type="text"
+          id="cname"
+          name="cname"
+          #cname="ngModel"
+          pattern="[A-Za-z -]*"
+          placeholder="Enter Name"
+          [(ngModel)]="wallet.cardName"
+          required
+        />
+        <div
+          *ngIf="cname.invalid && (cname.dirty || cname.touched)"
+          style="color: red; border-color: red"
+        >
+          <div *ngIf="cname.errors['required']">Name is required</div>
+          <div *ngIf="cname.errors['pattern']">Please enter a valid name.</div>
+        </div>
+        <br />
+
+        <label for="cardno">Card number</label><br />
+        <input
+          type="text"
+          id="cardno"
+          name="cardno"
+          #cardno="ngModel"
+          pattern="^4[0-9]{12}(?:[0-9]{3})?$"
+          placeholder="Enter Card number"
+          [(ngModel)]="wallet.cardNo"
+          required
+        />
+        <div
+          *ngIf="cardno.invalid && (cardno.dirty || cardno.touched)"
+          style="color: red; border-color: red"
+        >
+          <div *ngIf="cardno.errors['required']">Card number is required</div>
+          <div *ngIf="cardno.errors['pattern']">
+            Please enter a valid card number.
+          </div>
+        </div>
+        <br />
+
+        <label for="expmonth">Expiry</label><br />
+        <input
+          #month="ngModel"
+          [(ngModel)]="wallet.expMonth"
+          id="expmonth"
+          name="expmonth"
+          maxlength="2"
+          pattern="(0?[1-9]|1[012])"
+          placeholder="Enter month"
+          type="text"
+          required
+        />
+        <div
+          *ngIf="month.invalid && (month.dirty || month.touched)"
+          style="color: red; border-color: red"
+        >
+          <div *ngIf="month.errors['required']">Month is required</div>
+          <div *ngIf="month.errors['pattern']">
+            Please follow the pattern : (MM)
+          </div>
+        </div>
+        <br />
+
+        <input
+          #year="ngModel"
+          [(ngModel)]="wallet.expYear"
+          id="year"
+          name="year"
+          maxlength="2"
+          pattern="[0-9]*"
+          placeholder="Enter year"
+          type="text"
+          required
+        />
+        <div
+          *ngIf="year.invalid && (year.dirty || year.touched)"
+          style="color: red; border-color: red"
+        >
+          <div *ngIf="year.errors['required']">Year is required</div>
+          <div *ngIf="year.errors['pattern']">
+            Please follow the pattern : (YY)
+          </div>
+        </div>
+        <br />
+
+        <label for="cvv">CVV</label><br />
+        <input
+          type="password"
+          id="cvv"
+          name="cvv"
+          #cvv="ngModel"
+          [(ngModel)]="wallet.cvv"
+          maxlength="3"
+          pattern="[0-9]*"
+          placeholder="Enter CVV"
+          required
+        />
+        <div
+          *ngIf="cvv.invalid && (cvv.dirty || cvv.touched)"
+          style="color: red; border-color: red"
+        >
+          <div *ngIf="cvv.errors['required']">CVV is required</div>
+          <div *ngIf="cvv.errors['pattern']">
+            Please follow the pattern : (123)
+          </div>
+        </div>
+        <br />
+        <div id="resultDiv"></div>
+        <button type="submit" id="myBtn1">Pay</button>
+      </form>
+    </div>
+
+    <form>
+      <button class="accordion">Net Banking</button>
+      <div class="panel">
+        <br />
+
+        <label for="Bank">Select Your Bank</label>
+        <select id="Bank" name="Bank">
+          <option value="ICICT">Banks</option>
+          <option value="ICICT">ICICI Bank</option>
+          <option value="HDFC">HDFC Bank</option>
+          <option value="AXIS">AXIS Bank</option>
+          <option value="State Bank Of India">State Bank Of India</option>
+          <option value="Bank of Baroda">Bank of Baroda</option>
+        </select>
+
+        <br />
+
+        <button type="button" id="myBtn2" (click)="bookingOfTicket()">
+          Pay
+        </button>
+      </div>
+      <button class="accordion">Wallet</button>
+      <div class="panel">
+        <br />
+
+        <form action="/action_page.php">
+          <input type="radio" name="radio" /> Wallet
+          <br />
+          <div id="resultDiv1" style="color: red"></div>
+          <button
+            type="button"
+            class="pay"
+            id="myBtn3"
+            (click)="checkwallet()"
+            [disabled]="isLoggedIn == false"
+          >
+            Pay
+          </button>
+        </form>
+      </div>
+
+      <!-- The Modal -->
+      <div id="myModal1" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+          <p>
+            Payment succesful <br /><br />
+            Your ticket has been booked<br /><br />
+            <b>Thankyou!!!</b>
+          </p>
+
+          <br />
+          <br />
+          <a style="text-decoration: none; color: white"
+            ><button
+              type="submit"
+              value="Submit"
+              class="cancelbtn"
+              (click)="viewTicket()"
+            >
+              view ticket
+            </button></a
+          >
+        </div>
+      </div>
+
+      <div id="myModal2" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+          <p>
+            Payment succesful <br /><br />
+            Your ticket has been booked<br /><br />
+            <b>Thankyou!!!</b>
+          </p>
+
+          <br />
+          <br />
+          <a style="text-decoration: none; color: white"
+            ><button
+              type="submit"
+              value="Submit"
+              class="cancelbtn"
+              (click)="viewTicket()"
+            >
+              view ticket
+            </button></a
+          >
+        </div>
+      </div>
+
+      <div id="myModal3" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+          <p>
+            Payment succesful <br /><br />
+            Your ticket has been booked<br /><br />
+            <b>Thankyou!!!</b>
+          </p>
+
+          <br />
+          <br />
+          <a style="text-decoration: none; color: white"
+            ><button
+              type="submit"
+              value="Submit"
+              class="cancelbtn"
+              (click)="viewTicket()"
+            >
+              view ticket
+            </button></a
+          >
+        </div>
+      </div>
+
+      <div style="margin-top: 150px"></div>
+    </form>
+  </div>
+</div>

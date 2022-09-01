@@ -1,0 +1,163 @@
+<div id="main_1">
+  <div
+    class="card"
+    style="width: 45%; margin-left: 25%; background: rgba(204, 223, 228, 0.7)"
+  >
+    <br />
+    <h1
+      class="top"
+      style="
+        font-family: 'Pacifico', cursive;
+        margin-left: 12%;
+        font-size: 25px;
+        font-weight: bold;
+      "
+    >
+      Your Feedback
+    </h1>
+    <h3
+      style="
+        text-align: center;
+        font-family: 'Pacifico', cursive;
+        font-size: 20px;
+      "
+    >
+      We would like to hear from you!!!!
+    </h3>
+    <h4
+      style="
+        text-align: center;
+        font-family: 'Pacifico', cursive;
+        font-weight: bold;
+        font-size: 20px;
+      "
+    >
+      Select an emoji and give a comment to submit the Feedback form !!
+    </h4>
+    <div class="logo">
+      <div class="register-item">
+        <form
+          #myform="ngForm"
+          class="form form-register"
+          (ngSubmit)="submitFeedback()"
+        >
+          <div class="quest">
+            <h3
+              style="
+                text-align: center;
+                font-family: 'Pacifico', cursive;
+                font-weight: bold;
+                font-size: 20px;
+              "
+            >
+              What do you feel about SightCity Bus services?
+            </h3>
+          </div>
+
+          <div class="container1">
+            <div class="item">
+              <label for="0">
+                <input
+                  class="radio"
+                  type="radio"
+                  name="feedback"
+                  id="0"
+                  value="0"
+                  (click)="setRating(5)"
+                />
+                <span>😍</span>
+              </label>
+            </div>
+
+            <div class="item">
+              <label for="1">
+                <input
+                  class="radio"
+                  type="radio"
+                  name="feedback"
+                  id="1"
+                  value="1"
+                  (click)="setRating(4)"
+                />
+                <span>😁</span>
+              </label>
+            </div>
+
+            <div class="item">
+              <label for="2">
+                <input
+                  class="radio"
+                  type="radio"
+                  name="feedback"
+                  id="2"
+                  value="2"
+                  (click)="setRating(3)"
+                />
+                <span>😶</span>
+              </label>
+            </div>
+
+            <div class="item">
+              <label for="3">
+                <input
+                  class="radio"
+                  type="radio"
+                  name="feedback"
+                  id="3"
+                  value="3"
+                  (click)="setRating(2)"
+                />
+                <span>🙁</span>
+              </label>
+            </div>
+
+            <div class="item">
+              <label for="4">
+                <input
+                  class="radio"
+                  type="radio"
+                  name="feedback"
+                  id="4"
+                  value="4"
+                  (click)="setRating(1)"
+                />
+                <span>🤬</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="quest">
+            <h3
+              style="
+                text-align: center;
+                font-family: 'Pacifico', cursive;
+                font-size: 18px;
+                font-weight: bold;
+              "
+            >
+              Tell Us About Your Experience
+            </h3>
+          </div>
+          <textarea
+            [(ngModel)]="comment"
+            rows="7"
+            cols="50"
+            name="comment"
+            class="form-input"
+            id="length"
+            placeholder=" Enter text here..."
+          >
+          </textarea>
+          <button
+            *ngIf="rating !== undefined && comment !== undefined"
+            type="submit"
+            style="border-radius: 8px"
+          >
+            Submit
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div style="margin-top: 150px"></div>
+</div>

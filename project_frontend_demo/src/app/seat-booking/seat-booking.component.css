@@ -1,0 +1,65 @@
+h2,
+p,
+h1,
+button {
+  font-family: sans-serif;
+}
+
+/* CSS related to seat and seat Container */
+
+#seat-container {
+  background-color: rgb(236, 236, 229);
+  color: #000;
+  width: 400px;
+  height: auto;
+  text-align: center;
+  margin: auto;
+  border-radius: 47px;
+}
+
+.seat {
+  height: 40px;
+  width: 30px;
+  margin-right: 20px;
+  border-radius: 12px;
+  transition: 0.12s;
+}
+
+.seat.occupied {
+  background-color: rgb(137, 138, 139);
+  cursor: not-allowed;
+}
+
+.occupied input {
+  cursor: not-allowed;
+}
+
+.seat:hover {
+  transform: scale(1.1);
+}
+
+.seat.selected {
+  background-color: #32cd32;
+}
+
+.rowSeat {
+  display: flex;
+}
+
+/* Css for driver logo */
+
+.logo {
+  height: 40px;
+  width: 35px;
+}
+
+button:disabled {
+  border: 1px solid #b6b0b0;
+  background-color: #cccccc;
+  color: #8d8c8c;
+}
+
+input {
+  height: 40px;
+  width: 30px;
+}

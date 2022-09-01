@@ -1,0 +1,301 @@
+<div class="card" style="width: 33%; margin-left: 30%; padding-left: 110px">
+  <form form #loginForm="ngForm" (ngSubmit)="checkLogin(loginForm)">
+    <div>
+      <h1
+        style="
+          margin-left: 30%;
+          font-family: sans-serif;
+          font-weight: bold;
+          color: #d01a1e;
+        "
+      >
+        LOGIN
+      </h1>
+
+      <br />
+      <div id="allmsg" style="color: darkred"></div>
+
+      <label for="userId">Email Id</label><br />
+      <input
+        type="text"
+        #em="ngModel"
+        placeholder="Enter Email"
+        id="userId"
+        name="userId"
+        required
+        pattern="[a-z0-9._%+-]+@[a-z0-9-]+\.[a-z]{2,4}$"
+        [(ngModel)]="userEmail"
+      />
+      <br />
+      <div
+        *ngIf="em.invalid && (em.dirty || em.touched)"
+        style="color: darkred"
+      >
+        <span *ngIf="em.errors['required']">EmailId is required</span>
+        <span *ngIf="em.errors['pattern']">Please enter a valid UserId</span>
+      </div>
+
+      <label for="pwd">Password</label><br />
+
+      <input
+        type="password"
+        #pwd="ngModel"
+        placeholder="Enter Password"
+        id="pwd"
+        required
+        name="pwd"
+        required
+        pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,24}$"
+        [(ngModel)]="loginDto.password"
+      /><br />
+      <div
+        *ngIf="pwd.invalid && (pwd.dirty || pwd.touched)"
+        style="color: darkred"
+      >
+        <span *ngIf="pwd.errors['required']">Password is required</span>
+        <span *ngIf="pwd.errors['pattern']">Please enter a valid password</span>
+      </div>
+      <div id="msg" style="color: rgb(4, 37, 37)"></div>
+      <div id="msgLogin"></div>
+      <div class="buttonz">
+        <button
+          type="submit"
+          class="signupbtn"
+          style="color: white; background-color: black; margin-right: 27px"
+        >
+          Login
+        </button>
+
+        <a style="text-decoration: none" [routerLink]="['/homeLink']"
+          ><button
+            type="button"
+            class="cancelbtn"
+            style="color: white; background-color: black"
+          >
+            Cancel
+          </button></a
+        >
+      </div>
+      <div>
+        <a
+          style="text-decoration: none; color: white; font-family: sans-serif"
+          [routerLink]="['/forgotPasswordLink']"
+          ><span class="psw">Forgot password?</span></a
+        >
+      </div>
+
+      <a
+        style="text-decoration: none; color: white"
+        [routerLink]="['/registerationLink']"
+        ><button
+          type="button"
+          style="width: 72%; background-color: #d01a1e; border-top: 3px black"
+        >
+          Register
+        </button></a
+      >
+    </div>
+  </form>
+</div>
+<div style="height: 100px"></div>
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <title>LOGIN PAGE WITHOUT FLOATING BACKGROUND</title>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Merienda+One"
+    />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <style>
+      body {
+        color: #999;
+        background: #f5f5f5;
+        font-family: "Varela Round", sans-serif;
+      }
+      .form-control {
+        box-shadow: none;
+        border-color: #ddd;
+      }
+      .form-control:focus {
+        border-color: #4aba70;
+      }
+      .login-form {
+        width: 350px;
+        margin: 0 auto;
+        padding: 30px 0;
+      }
+      .login-form form {
+        color: #434343;
+        border-radius: 1px;
+        margin-bottom: 15px;
+        background: #fff;
+        border: 1px solid #f3f3f3;
+        box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+        padding: 30px;
+      }
+      .login-form h4 {
+        text-align: center;
+        font-size: 22px;
+        margin-bottom: 20px;
+      }
+      .login-form .avatar {
+        color: #fff;
+        margin: 0 auto 30px;
+        text-align: center;
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        z-index: 9;
+        background: #4aba70;
+        padding: 15px;
+        box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1);
+      }
+      .login-form .avatar i {
+        font-size: 62px;
+      }
+      .login-form .form-group {
+        margin-bottom: 20px;
+      }
+      .login-form .form-control,
+      .login-form .btn {
+        min-height: 40px;
+        border-radius: 2px;
+        transition: all 0.5s;
+      }
+      .login-form .close {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+      }
+      .login-form .btn,
+      .login-form .btn:active {
+        background: #4aba70 !important;
+        border: none;
+        line-height: normal;
+      }
+      .login-form .btn:hover,
+      .login-form .btn:focus {
+        background: #42ae68 !important;
+      }
+      .login-form .checkbox-inline {
+        float: left;
+      }
+      .login-form input[type="checkbox"] {
+        position: relative;
+        top: 2px;
+      }
+      .login-form .forgot-link {
+        float: right;
+      }
+      .login-form .small {
+        font-size: 13px;
+      }
+      .login-form a {
+        color: #4aba70;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="login-form">
+      <form form #loginForm="ngForm" (ngSubmit)="checkLogin(loginForm)">
+        <div>
+          <div class="avatar"><i class="material-icons">&#xE7FF;</i></div>
+          <h2 style="margin-left: 28%">LOGIN</h2>
+          <br />
+          <div class="form-group">
+            <div id="allmsg" style="color: darkred"></div>
+            <label for="userId">Email Id</label><br />
+            <input
+              type="text"
+              #em="ngModel"
+              placeholder="Enter Email"
+              id="userId"
+              name="userId"
+              required
+              pattern="[a-z0-9._%+-]+@[a-z0-9-]+\.[a-z]{2,4}$"
+              [(ngModel)]="userEmail"
+            />
+
+            <div
+              *ngIf="em.invalid && (em.dirty || em.touched)"
+              style="color: darkred"
+            >
+              <span *ngIf="em.errors['required']">Email Id is required</span>
+              <span *ngIf="em.errors['pattern']"
+                >Please enter a valid UserId</span
+              >
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="pwd">Password</label><br />
+            <input
+              type="password"
+              #pwd="ngModel"
+              placeholder="Enter Password"
+              id="pwd"
+              required
+              name="pwd"
+              required
+              pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$"
+              [(ngModel)]="loginDto.password"
+            />
+            <div
+              *ngIf="pwd.invalid && (pwd.dirty || pwd.touched)"
+              style="color: darkred"
+            >
+              <span *ngIf="pwd.errors['required']">Password is required</span>
+              <span *ngIf="pwd.errors['pattern']"
+                >Please enter a valid password</span
+              >
+            </div>
+            <div id="msg" style="color: rgb(4, 37, 37)"></div>
+            <div id="msgLogin"></div>
+          </div>
+          <div class="form-group">
+            <button type="submit" class="signupbtn">Login</button>
+            <a
+              style="text-decoration: none; color: white"
+              [routerLink]="['/homeLink']"
+              ><button type="button" class="cancelbtn">Cancel</button></a
+            >
+          </div>
+          <div class="form-group small clearfix">
+            <label class="form-check-label"
+              ><input type="checkbox" /> Remember me</label
+            >
+            <a href="#" class="forgot-link">Forgot Password?</a>
+          </div>
+          <input
+            type="submit"
+            class="btn btn-primary btn-block btn-lg"
+            value="Login"
+          />
+        </div>
+      </form>
+      <div class="text-center small">
+        Don't have an account? <a href="#">Sign up</a>
+      </div>
+    </div>
+  </body>
+</html> -->

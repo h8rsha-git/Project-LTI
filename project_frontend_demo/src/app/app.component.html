@@ -1,0 +1,73 @@
+<div class="navbar">
+  <div class="logo">
+    <input
+      type="image"
+      src="../assets/logo3.png"
+      style="height: 80px; width: 120px"
+      class="dropbtn"
+    />
+  </div>
+  <ul>
+    <li>
+      <div class="dropdown">
+        <input
+          type="image"
+          src="../assets/loginn.png"
+          style="height: 35px; width: 35px; padding: 50%"
+          class="dropbtn"
+        />
+        <div class="dropdown-content">
+          <a [routerLink]="['/trackticket']" style="font-family: sans-serif"
+            >Track booking</a
+          >
+          <span *ngIf="isStatus; then block2; else block1"></span>
+          <ng-template #block1>
+            <a [routerLink]="['/loginLink']" style="font-family: sans-serif"
+              >Login/Sign-up</a
+            >
+          </ng-template>
+          <ng-template #block2>
+            <a [routerLink]="['/userDashBoard']" style="font-family: sans-serif"
+              >Dashboard</a
+            >
+            <a (click)="signOut()">Sign Out</a>
+          </ng-template>
+          <a [routerLink]="['/feedbackLink']" style="font-family: sans-serif"
+            >Feedback</a
+          >
+        </div>
+      </div>
+    </li>
+    <li>
+      <a
+        [routerLink]="['/contactUsLink']"
+        style="float: right; font-family: sans-serif"
+        >CONTACT US</a
+      >
+    </li>
+    <li>
+      <a href="['/aboutUsLink']" style="float: right; font-family: sans-serif"
+        >ABOUT US</a
+      >
+    </li>
+    <li>
+      <a
+        [routerLink]="['/homeLink']"
+        style="float: right; font-family: sans-serif"
+        >HOME</a
+      >
+    </li>
+    <li>
+      <a
+        [routerLink]="['/adminLogin']"
+        style="float: right; font-family: sans-serif"
+        >ADMIN</a
+      >
+    </li>
+  </ul>
+</div>
+<div class="row">
+  <div class="main">
+    <router-outlet></router-outlet>
+  </div>
+</div>

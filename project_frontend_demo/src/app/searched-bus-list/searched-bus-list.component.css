@@ -1,0 +1,72 @@
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th {
+  text-align: center;
+  padding: 10px;
+  grid-row-gap: 10px;
+  grid-column-gap: 5px;
+  font-family: sans-serif;
+  font-size: 18px;
+}
+
+td {
+  text-align: center;
+  padding: 15px;
+  padding-left: 35px;
+  grid-row-gap: 10px;
+  grid-column-gap: 7px;
+  font-size: 18px;
+  border-bottom: 1px solid #ddd;
+}
+
+.text {
+  text-align: center;
+}
+
+.row {
+  text-align: center;
+}
+
+.card {
+  background-color: #f3ebeb;
+  padding: 20px;
+  margin-top: 20px;
+  overflow: hidden;
+  background: #fffdfa;
+  font-weight: bold;
+  box-shadow: 5px 5px gray;
+}
+
+.card2 {
+  background-color: #f3ebeb;
+  padding: 20px;
+  margin-top: 20px;
+  overflow: hidden;
+  background: #fffdfa;
+  font-weight: bold;
+  border-radius: 20px;
+  box-shadow: 5px 5px gray;
+}
+
+body {
+  font-family: Arial;
+  padding: 10px;
+  background: #f1f1f1;
+  background-repeat: no-repeat;
+  background-image: url("/src/assets/buswater.jpeg");
+  background-size: 100% auto;
+  height: 100%;
+  font-family: sans-serif;
+}
+
+button {
+  font-family: sans-serif;
+  border-radius: 10px;
+}
+
+label {
+  font-size: 18px;
+}

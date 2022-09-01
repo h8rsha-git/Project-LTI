@@ -1,0 +1,237 @@
+<div class="card" style="width: 30%; margin-left: 35%; padding-left: 80px">
+  <form #registerForm="ngForm" (ngSubmit)="checkRegister(registerForm)">
+    <div class="Rcontainer">
+      <div class="Rcontainer">
+        <h3
+          style="
+            margin-left: 21%;
+            font-family: 'Pacifico', cursive;
+            font-weight: bolder;
+            font-size: 1.6em;
+          "
+        >
+          REGISTRATION
+        </h3>
+
+        <label for="fname">FIRST NAME</label> <br />
+        <input
+          type="text"
+          #fnm="ngModel"
+          placeholder="Enter First Name"
+          name="fname"
+          id="fname"
+          pattern="[A-Za-z\s]*"
+          required
+          [(ngModel)]="user.firstName"
+        />
+        <br />
+        <span *ngIf="fnm.invalid && (fnm.dirty || fnm.touched)">
+          <span *ngIf="fnm.errors['required']"> First Name is required</span>
+          <span *ngIf="fnm.errors['pattern']">
+            <li>Please follow the pattern:(John Smith)</li>
+            <li>Numbers and special characters are not allowed</li>
+          </span> </span
+        ><br />
+
+        <label for="lname">LAST NAME</label><br />
+        <input
+          type="text"
+          #lnm="ngModel"
+          placeholder="Enter Last Name"
+          name="lname"
+          id="lname"
+          pattern="[A-Za-z]*"
+          required
+          [(ngModel)]="user.lastName"
+        />
+        <br />
+
+        <span *ngIf="lnm.invalid && (lnm.dirty || lnm.touched)">
+          <span *ngIf="lnm.errors['required']">Last Name is required</span>
+          <span *ngIf="lnm.errors['pattern']">
+            <li>Please follow the pattern:(Peterson)</li>
+            <li>Numbers and special characters are not allowed</li>
+          </span> </span
+        ><br />
+
+        <label for="dt">DATE OF BIRTH</label><br />
+
+        <input
+          class="dt"
+          type="date"
+          placeholder="Choose DOB "
+          name="dt"
+          required
+          #dt="ngModel"
+          [min]="minDate"
+          [(ngModel)]="user.dateOfBirth"
+        />
+        <br />
+        <span *ngIf="dt.invalid && (dt.dirty || dt.touched)">
+          <span *ngIf="dt.errors['pattern']">
+            <li>Date of Birth Is Required</li>
+          </span>
+        </span>
+        <br />
+
+        <label for="email">EMAIL</label><br />
+        <input
+          type="text"
+          #em="ngModel"
+          placeholder="Enter Email"
+          id="email"
+          name="email"
+          pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+          required
+          [(ngModel)]="user.email"
+        />
+        <br />
+
+        <span
+          *ngIf="em.invalid && (em.dirty || em.touched)"
+          style="color: red; border-color: red"
+        >
+          <span *ngIf="em.errors['required']">Email is required</span>
+          <span *ngIf="em.errors['pattern']"
+            >Please enter a valid email</span
+          ></span
+        ><br />
+
+        <label for="pwd">PASSWORD</label><br />
+        <input
+          type="password"
+          #pwd="ngModel"
+          placeholder="Enter Password"
+          id="pwd"
+          name="pwd"
+          pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$"
+          required
+          [(ngModel)]="user.password"
+          (change)="checkPassword()"
+        /><br />
+
+        <span
+          *ngIf="pwd.invalid && (pwd.dirty || pwd.touched)"
+          style="color: red; border-color: red"
+        >
+          <span *ngIf="pwd.errors['required']">Password is required</span>
+          <span *ngIf="pwd.errors['pattern']"
+            >Password must contain:
+            <li>A uppercase (A)</li>
+            <li>A lowercase (a)</li>
+            <li>A digit (0-9)</li>
+            <li>A special character (@,#,$,&)</li>
+            <li>Minimum length is 8</li>
+          </span> </span
+        ><br />
+
+        <label for="cpwd">CONFIRM PASSWORD</label><br />
+        <input
+          type="password"
+          #cp="ngModel"
+          placeholder="Confirm Password"
+          id="cpwd"
+          name="cpwd"
+          required
+          pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$"
+          [(ngModel)]="userCPassword"
+          (change)="checkPassword()"
+        />
+        <br />
+
+        <div
+          id="resultDiv"
+          style="color: red; font-family: 'Pacifico', cursive; font-size: 15px"
+        ></div>
+
+        <div id="btn3"></div>
+
+        <label for="ph">CONTACT NO</label><br />
+        <input
+          type="text"
+          #cn="ngModel"
+          placeholder="Enter Contact Number"
+          name="ph"
+          id="ph"
+          pattern="^[6-9]\d{9}$"
+          required
+          [(ngModel)]="user.contactNo"
+        />
+        <br />
+
+        <span
+          *ngIf="cn.invalid && (cn.dirty || cn.touched)"
+          style="color: red; border-color: red"
+        >
+          <span *ngIf="cn.errors['required']">Mobile number is required</span>
+          <span *ngIf="cn.errors['pattern']"
+            >Please enter valid mobile number</span
+          ></span
+        ><br />
+        <div id="btn2"></div>
+        <div class="">
+          <div id="btn1"></div>
+          <a style="text-decoration: none; color: white"
+            ><button type="submit" class="signupbtn" id="btn1">
+              Sign-up
+            </button></a
+          >
+
+          <a
+            style="text-decoration: none; color: white"
+            [routerLink]="['/homeLink']"
+            ><button type="button" class="cancelbtn">Cancel</button></a
+          >
+        </div>
+      </div>
+      <div style="height: 100px"></div>
+    </div>
+  </form>
+</div>
+<br />
+
+<!-- The Modal -->
+<div id="myModal1" class="modal">
+  <!-- Modal content -->
+  <div class="modal-content">
+    <p>
+      Registration successful <br /><br />
+      Please check your mail for Login credentials<br /><br />
+      <br />
+      <br />
+      <a
+        style="text-decoration: none; color: white"
+        [routerLink]="['/loginLink']"
+        ><button type="submit" value="Submit" class="cancelbtn">
+          Click here to Login
+        </button></a
+      >
+      <br />
+      <br />
+      <br />
+    </p>
+  </div>
+</div>
+
+<div id="myModal" class="modal">
+  <!-- Modal content -->
+  <div class="modal-content">
+    <p>
+      Password is not matching <br /><br />
+      <br />
+      <br />
+      <a
+        style="text-decoration: none; color: white"
+        [routerLink]="['/loginLink']"
+        ><button type="submit" value="Submit" class="cancelbtn">
+          Cancel
+        </button></a
+      >
+      <br />
+      <br />
+      <br />
+    </p>
+  </div>
+</div>
+
+<div style="margin-top: 100px"></div>

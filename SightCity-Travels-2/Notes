@@ -1,0 +1,33 @@
+COMPLETED:
+	addBus()
+	addUser()
+	updateBus()
+
+THINGS TO DO:
+	
+	Need to work on Spaces in URL -> String manipulation
+	SOURCE_A, DESTINATION_A <=> SOURCE A DESTINATION
+	
+Notes for UI:
+Date picker change
+Admin and Dashboard lo button color
+logo set cheyali
+font anni set cheyali
+
+Notes for Today:
+Scrum + PPT + Division => Viva
+
+Morning:
+Architecture -> ee entity, rep, service, front-end to backend.
+
+
+// view seats
+// seats selection  
+// passengers
+// ticket generation 
+
+// searching buses + showing
+// tracking ticket
+// user-dashboard
+// payment
+

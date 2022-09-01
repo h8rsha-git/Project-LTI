@@ -1,0 +1,106 @@
+<div id="main_1" class="card" style="margin-top: 70px; border-radius: 30px">
+  <div class="outer" style="padding-top: 22px; padding-bottom: 35px">
+    <p
+      style="
+        text-align: center;
+        font-family: sans-serif;
+        font-size: 45px;
+        font-weight: bold;
+      "
+    >
+      BOOK YOUR BUS TODAY !!
+    </p>
+
+    <form #searchBusForm="ngForm" (ngSubmit)="checkBus(searchBusForm)">
+      <div id="errorForDirectClick" style="text-align: center"></div>
+      <div class="row">
+        <div class="col_s">
+          <span *ngIf="src.errors && (src.dirty || src.touched)">
+            <span
+              style="margin-left: 10%; color: white; background-color: #d01a1e"
+              [hidden]="!src.errors['required']"
+              >Source is required</span
+            ></span
+          >
+          <br />
+          <input
+            list="list-buses"
+            type="text"
+            value="source"
+            id="source"
+            name="source"
+            [(ngModel)]="source"
+            #src="ngModel"
+            placeholder="ENTER SOURCE CITY"
+            required
+            style="margin-left: 10%"
+          />
+
+          <datalist id="list-buses">
+            <option value="Pune"></option>
+            <option value="Mumbai"></option>
+            <option value="Chennai"></option>
+            <option value="Aurangabad"></option>
+            <option value="Nashik"></option>
+            <option value="Nagpur"></option>
+          </datalist>
+        </div>
+
+        <div class="col_s">
+          <span *ngIf="des.errors && (des.dirty || des.touched)">
+            <span
+              style="margin-left: 10%; color: white; background-color: #d01a1e"
+              [hidden]="!des.errors['required']"
+              >Destination is required</span
+            ></span
+          ><br />
+
+          <input
+            list="list-buses"
+            type="text"
+            value="destination"
+            id="destination"
+            name="destination"
+            [(ngModel)]="destination"
+            #des="ngModel"
+            placeholder="ENTER DESTINATION CITY"
+            required
+            style="margin-left: 5%"
+          />
+
+          <datalist id="list-buses">
+            <option value="Pune"></option>
+            <option value="Mumbai"></option>
+            <option value="Chennai"></option>
+            <option value="Aurangabad"></option>
+            <option value="Nagpur"></option>
+          </datalist>
+        </div>
+
+        <div class="col_s">
+          <span *ngIf="dt.errors && (dt.dirty || dt.touched)">
+            <span
+              style="margin-left: 10%; color: white; background-color: #d01a1e"
+              [hidden]="!dt.errors['required']"
+              >Travel date is required</span
+            ></span
+          ><br />
+
+          <input
+            class="dt"
+            type="date"
+            placeholder="CHOOSE A DATE"
+            name="journeyDate"
+            required
+            #dt="ngModel"
+            [min]="minDate"
+            [(ngModel)]="dateOfJourney"
+          />
+        </div>
+      </div>
+      <div style="display: flex; justify-content: center">
+        <button type="submit" style="margin-top: 3%">SEARCH BUSES</button>
+      </div>
+    </form>
+  </div>
+</div>

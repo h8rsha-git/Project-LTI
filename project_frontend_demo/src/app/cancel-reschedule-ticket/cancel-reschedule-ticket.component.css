@@ -1,0 +1,50 @@
+
+
+ input[type=text],input[type=password],input[type=date], select, textarea {
+    width: 80% ;/* Full width */
+    padding: 15px; /* Some padding */ 
+    border: 1px solid #ccc; /* Gray border */
+    border-radius: 4px; /* Rounded borders */
+    box-sizing: border-box; /* Make sure that padding and width stays in place */
+    margin-top: 6px; /* Add a top margin */
+    margin-bottom: 16px; /* Bottom margin */
+    resize: vertical /* Allow the user to vertically resize the textarea (not horizontally) */
+  }
+  button {
+    border-radius: 4px;
+    background-color:rgb(11, 89, 92);
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 32%;
+    opacity: 0.9;
+    float: left;
+  }
+  .cancelbtn {
+      background-color: #f44336;
+    }
+   
+    .outer {
+    
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%,-50%);
+      width: 800px;
+      color: black;
+     
+      padding: 25px 40px 25px 40px ;
+       background: rgba(254, 254, 254, 0.4);
+    }
+   
+    .container {
+      padding: 16px;
+    }
+    
+    span.psw {
+      margin-right:20% ;
+      float: right;
+      padding-top: 16px;
+    }

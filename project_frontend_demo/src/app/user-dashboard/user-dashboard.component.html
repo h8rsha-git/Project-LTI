@@ -1,0 +1,416 @@
+<div class="tab" style="margin-bottom: 22em">
+  <button style="text-align: center">
+    <i style="font-size: 5em" class="fa fa-user" aria-hidden="true"></i
+    ><br /><label
+      >{{ loggedInUser.firstName }} {{ loggedInUser.lastName }}</label
+    >
+  </button>
+  <button
+    class="tablinks"
+    (click)="openTab($event, 'Profile', 'profilebtn')"
+    id="profilebtn"
+  >
+    <i class="fa fa-user" aria-hidden="true"></i><label>Profile</label>
+  </button>
+  <button
+    class="tablinks"
+    (click)="openTab($event, 'Bookings', 'bookbtn')"
+    id="bookbtn"
+  >
+    <i class="fa fa-ticket" aria-hidden="true"></i><label>Bookings</label>
+  </button>
+  <button
+    class="tablinks"
+    (click)="openTab($event, 'Wallet', 'walletbtn')"
+    id="walletbtn"
+  >
+    <i class="fa fa-google-wallet" aria-hidden="true"></i><label>Wallet</label>
+  </button>
+  <button
+    class="tablinks"
+    (click)="openTab($event, 'Changepass', 'passbtn')"
+    id="passbtn"
+  >
+    <i class="fa fa-key" aria-hidden="true"></i><label>Change Password</label>
+  </button>
+  <button
+    class="tablinks"
+    (click)="signOut()"
+    (click)="openTab($event, 'Signout', 'signbtn')"
+    id="signbtn"
+  >
+    <i class="fa fa-sign-out" aria-hidden="true"></i
+    ><a style="text-decoration: none">Sign Out</a>
+  </button>
+</div>
+
+<div id="Profile" class="tabcontent">
+  <div class="card">
+    <h1 style="text-align: center; color: black">
+      <label>Personal Details</label>
+    </h1>
+    <form action="" method="POST">
+      <label for="name">Name</label><br />
+      <input
+        type="text"
+        id="name"
+        value=""
+        placeholder="Enter Name"
+        name="username"
+        #userName="ngModel"
+        [(ngModel)]="loggedInUser.firstName"
+        [disabled]="!isEditable"
+        pattern="[A-Za-z -]*"
+        required
+      />
+      <div
+        *ngIf="userName.invalid && (userName.dirty || userName.touched)"
+        style="color: red; border-color: red"
+      >
+        <div *ngIf="userName.errors['required']">Name is required</div>
+        <div *ngIf="userName.errors['pattern']">Please enter a valid name.</div>
+      </div>
+      <br />
+      <label for="dob">DOB</label><br />
+      <mat-form-field class="dob">
+        <input
+          matInput
+          [matDatepicker]="picker"
+          [max]="minDate"
+          [disabled]="!isEditable"
+          name="dob"
+          required
+          #dob="ngModel"
+          [(ngModel)]="loggedInUser.dateOfBirth"
+        />
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+      <br />
+      <label for="">Gender</label><br />
+      <input
+        type="radio"
+        id="male"
+        name="gender"
+        value="male"
+        name="gender"
+        #gender="ngModel"
+        [(ngModel)]="loggedInUser.gender"
+      />Male<br />
+      <input
+        type="radio"
+        id="female"
+        name="gender"
+        value="female"
+        name="gender"
+        #gender="ngModel"
+        [(ngModel)]="loggedInUser.gender"
+        [disabled]="!isEditable"
+      />Female<br /><br />
+      <label for="email">Email</label><br />
+      <input
+        type="text"
+        id="email"
+        placeholder="Enter Email"
+        name="em"
+        #em="ngModel"
+        [(ngModel)]="loggedInUser.email"
+        [disabled]="!isEditable"
+        pattern="[a-z0-9._%+-]+@[a-z0-9-]+\.[a-z]{2,4}$"
+        required
+      />
+      <div
+        *ngIf="em.invalid && (em.dirty || em.touched)"
+        style="color: red; border-color: red"
+      >
+        <div *ngIf="em.errors['required']">Email is required</div>
+        <div *ngIf="em.errors['pattern']">Please enter a valid email</div>
+      </div>
+      <br />
+
+      <label for="mobile">Phone</label><br />
+      <input
+        type="text"
+        id="mobile"
+        placeholder="Enter Mobile"
+        name="cn"
+        #cn="ngModel"
+        [(ngModel)]="loggedInUser.contactNo"
+        [disabled]="!isEditable"
+        pattern="^[6-9]\d{9}$"
+        required
+      />
+      <div
+        *ngIf="cn.invalid && (cn.dirty || cn.touched)"
+        style="color: red; border-color: red"
+      >
+        <div *ngIf="cn.errors['required']">Mobile number is required</div>
+        <div *ngIf="cn.errors['pattern']">Please enter valid mobile number</div>
+      </div>
+      <br />
+
+      <label for="address">Address</label><br />
+      <input
+        type="text"
+        id="address"
+        placeholder="Enter Address"
+        name="add"
+        #add="ngModel"
+        [(ngModel)]="loggedInUser.address"
+        [disabled]="!isEditable"
+        required
+      />
+      <div
+        *ngIf="add.invalid && (add.dirty || add.touched)"
+        style="color: red; border-color: red"
+      >
+        <div *ngIf="add.errors['required']">Address is required</div>
+      </div>
+      <br />
+      <button
+        name="edit"
+        id="editUpdateBtn"
+        value="edit"
+        (click)="updateUserInfo()"
+      >
+        Edit</button
+      >&nbsp;
+      <div id="msg"></div>
+    </form>
+  </div>
+</div>
+
+<div id="Bookings" class="tabcontent" style="margin-bottom: 100em">
+  <div class="card">
+    <h1 style="text-align: center"><label>Bookings</label></h1>
+
+    <table class="table">
+      <tr>
+        <th>TicketId</th>
+        <th>TravelDate</th>
+        <th>Email</th>
+        <th>Amount</th>
+        <th>Status</th>
+        <th>Passengers</th>
+      </tr>
+
+      <tr *ngFor="let bookingdetails of tickets">
+        <td>{{ bookingdetails.ticketId }}</td>
+        <td>{{ bookingdetails.travelDate }}</td>
+        <td>{{ bookingdetails.email }}</td>
+        <td>{{ bookingdetails.totalAmount }}</td>
+        <td>{{ bookingdetails.status }}</td>
+        <td>{{ bookingdetails.noOfPassengers }}</td>
+
+        <!--<button class="btn1" style="width: 100%;" type="button" [routerLink]="['/ticketLink']" [disabled]="bookingdetails.status=='CANCELLED'" (click)="trackFunction(bookingdetails.ticketId)">Check</button>-->
+      </tr>
+    </table>
+  </div>
+</div>
+<div id="Wallet" class="tabcontent" style="margin-bottom: 100em">
+  <div class="card">
+    <form #rechargeForm="ngForm" (ngSubmit)="rechargeWallet(rechargeForm)">
+      <h1 style="text-align: center; font-style: oblique; color: black">
+        <label>Wallet</label>
+      </h1>
+      <label style="font-size: 25px"> Available Balance :</label
+      ><i class="fa fa-inr" aria-hidden="true" style="font-size: 30px">{{
+        loggedInUser.wallet
+      }}</i
+      ><br /><br />
+      <label for="cname">Name on Card</label><br />
+      <input
+        type="text"
+        id="cname"
+        name="cname"
+        #cname="ngModel"
+        pattern="[A-Za-z -]*"
+        placeholder="Enter Name"
+        [(ngModel)]="wallet.cardName"
+        required
+      />
+      <div
+        *ngIf="cname.invalid && (cname.dirty || cname.touched)"
+        style="color: darkred; border-color: darkred"
+      >
+        <div *ngIf="cname.errors['required']">Name is required</div>
+        <div *ngIf="cname.errors['pattern']">Please enter a valid name.</div>
+      </div>
+      <br />
+
+      <label for="cardno">Card number</label><br />
+      <input
+        type="text"
+        id="cardno"
+        name="cardno"
+        #cardno="ngModel"
+        pattern="^[0-9\s]{16}"
+        placeholder="Enter Card number"
+        [(ngModel)]="wallet.cardNo"
+        required
+      />
+      <div
+        *ngIf="cardno.invalid && (cardno.dirty || cardno.touched)"
+        style="color: darkred; border-color: red"
+      >
+        <div *ngIf="cardno.errors['required']">Card number is required</div>
+        <div *ngIf="cardno.errors['pattern']">
+          Please enter a valid card number.
+        </div>
+      </div>
+      <br />
+
+      <label for="expmonth">Expiry</label><br />
+
+      <input
+        #month="ngModel"
+        [(ngModel)]="wallet.expMonth"
+        id="month"
+        name="expmonth"
+        maxlength="2"
+        pattern="(0?[1-9]|1[012])"
+        placeholder="Enter month"
+        type="text"
+        required
+      />
+      <div
+        *ngIf="month.invalid && (month.dirty || month.touched)"
+        style="color: darkred; border-color: darkred"
+      >
+        <div *ngIf="month.errors['required']">Month is required</div>
+        <div *ngIf="month.errors['pattern']">
+          Please follow the pattern : (MM)
+        </div>
+      </div>
+      <br />
+
+      <input
+        #year="ngModel"
+        [(ngModel)]="wallet.expYear"
+        id="year"
+        name="year"
+        maxlength="2"
+        pattern="[0-9]*"
+        placeholder="Enter year"
+        type="text"
+        required
+      />
+      <div
+        *ngIf="year.invalid && (year.dirty || year.touched)"
+        style="color: darkred; border-color: darkred"
+      >
+        <div *ngIf="year.errors['required']">Year is required</div>
+        <div *ngIf="year.errors['pattern']">
+          Please follow the pattern : (YY)
+        </div>
+      </div>
+      <br />
+
+      <label for="cvv">CVV</label><br />
+      <input
+        type="password"
+        id="cvv"
+        name="cvv"
+        #cvv="ngModel"
+        [(ngModel)]="wallet.cvv"
+        maxlength="3"
+        pattern="[0-9]*"
+        placeholder="Enter CVV"
+        required
+      />
+      <div
+        *ngIf="cvv.invalid && (cvv.dirty || cvv.touched)"
+        style="color: darkred; border-color: darkred"
+      >
+        <div *ngIf="cvv.errors['required']">CVV is required</div>
+        <div *ngIf="cvv.errors['pattern']">
+          Please follow the pattern : (123)
+        </div>
+      </div>
+      <br />
+
+      <label for="amount">Enter the Amount</label><br />
+      <input
+        type="number"
+        id="amount"
+        name="amount"
+        #am="ngModel"
+        [(ngModel)]="wallet.amount"
+        maxlength="3"
+        placeholder="Enter Amount"
+        required
+      />
+      <div
+        *ngIf="am.invalid && (am.dirty || am.touched)"
+        style="color: darkred; border-color: red"
+      >
+        <div *ngIf="am.errors['required']">Amount is required</div>
+      </div>
+      <br />
+      <div id="addAmount"></div>
+      <button class="btn1" type="submit">+Add Balance</button>
+      <div id="msgWallet"></div>
+    </form>
+  </div>
+</div>
+
+<div id="Changepass" class="tabcontent">
+  <div class="card">
+    <h1 style="text-align: center; font-style: oblique; color: black">
+      <label>Change Password</label>
+    </h1>
+    <form #passwordForm="ngForm" (ngSubmit)="checkPassword(passwordForm)">
+      <label for="npwd">New Password</label><br />
+      <input
+        type="password"
+        #npw="ngModel"
+        placeholder="Enter Password"
+        id="npwd"
+        required
+        name="npwd"
+        required
+        pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$"
+        [(ngModel)]="password.newPassword"
+      />
+      <div
+        *ngIf="npw.invalid && (npw.dirty || npw.touched)"
+        style="color: red; border-color: red"
+      >
+        <div *ngIf="npw.errors['required']">Password is required</div>
+        <div *ngIf="npw.errors['pattern']">
+          Password must contain:
+          <li>A uppercase (A)</li>
+          <li>A lowercase (a)</li>
+          <li>A digit (0-9)</li>
+          <li>A special character (@,#,$,&)</li>
+        </div>
+      </div>
+      <br />
+
+      <label for="cpwd">Confirm Password</label><br />
+      <input
+        type="password"
+        #cpw="ngModel"
+        placeholder="Enter Password"
+        id="cpwd"
+        required
+        name="cpwd"
+        required
+        pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$"
+        [(ngModel)]="password.confirmPassword"
+      />
+      <div
+        *ngIf="cpw.invalid && (cpw.dirty || cpw.touched)"
+        style="color: red; border-color: red"
+      >
+        <div *ngIf="cpw.errors['required']">Password is required</div>
+        <div *ngIf="cpw.errors['pattern']">invalid password type</div>
+      </div>
+      <br />
+      <div id="changePassword"></div>
+      <button class="btn1" type="submit">Submit</button>&nbsp;
+      <button class="btn2" type="reset">Reset</button>
+      <div id="resultDiv" style="color: rgb(63, 48, 17)"></div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,70 @@
+<div class="card" style="width: 33%; margin-left: 30%; padding-left: 110px">
+  <form form #loginForm="ngForm" (ngSubmit)="checkAdminLogin(loginForm)">
+    <div>
+      <h1 style="margin-left: 35%; font-family: sans-serif">ADMIN LOGIN</h1>
+
+      <br />
+      <div id="allmsg" style="color: darkred"></div>
+
+      <label for="adminId">Admin Id</label><br />
+      <input
+        type="text"
+        #em="ngModel"
+        placeholder="Enter AdminId"
+        id="adminId"
+        name="adminId"
+        maxlength="4"
+        pattern="[0-9]*"
+        required
+        [(ngModel)]="loginDto.id"
+      />
+      <br />
+      <div
+        *ngIf="em.invalid && (em.dirty || em.touched)"
+        style="color: darkred"
+      >
+        <span *ngIf="em.errors['required']">AdminId is required</span>
+        <span *ngIf="em.errors['pattern']">Please enter a valid AdminId</span>
+      </div>
+
+      <label for="pwd">Password</label><br />
+
+      <input
+        type="password"
+        #pwd="ngModel"
+        placeholder="Enter Password"
+        id="pwd"
+        required
+        name="pwd"
+        required
+        pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$"
+        [(ngModel)]="loginDto.password"
+      /><br />
+      <div
+        *ngIf="pwd.invalid && (pwd.dirty || pwd.touched)"
+        style="color: darkred"
+      >
+        <span *ngIf="pwd.errors['required']">Password is required</span>
+        <span *ngIf="pwd.errors['pattern']">Please enter a valid password</span>
+      </div>
+      <div id="msg" style="color: rgb(4, 37, 37)"></div>
+      <div id="msgLogin"></div>
+      <div class="">
+        <button type="submit" class="signupbtn">Login</button>
+        <!-- <a
+          style="text-decoration: none; color: white"
+          [routerLink]="['/homeLink']"
+          ><button type="button" class="cancelbtn">Cancel</button></a
+        > -->
+      </div>
+      <div>
+        <a
+          style="text-decoration: none; color: white; font-family: sans-serif"
+          [routerLink]="['/forgotPasswordLink']"
+          ><span class="psw">Forgot password?</span></a
+        >
+      </div>
+    </div>
+  </form>
+</div>
+<div style="height: 100px"></div>

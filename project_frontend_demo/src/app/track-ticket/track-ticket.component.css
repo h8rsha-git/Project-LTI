@@ -1,0 +1,44 @@
+input[type=text],
+input[type=password],
+input[type=date] {
+    width: 100%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    display: inline-block;
+    border: none;
+    background: #f1f1f1;
+}
+
+button {
+    background-color: rgb(8, 55, 56);
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 30%;
+    margin: 0px 20px;
+    opacity: 0.9;
+    float: left;
+}
+
+.cancelbtn {
+    background-color: rgb(221, 105, 105);
+}
+
+.outer {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 800px;
+    color: black;
+    padding: 25px 40px 25px 40px;
+    background: rgba(254, 254, 254, 0.4);
+}
+
+label {
+    font-family: 'Pacifico', cursive;;
+    font-weight: bold;
+    font-size: 18px;
+}

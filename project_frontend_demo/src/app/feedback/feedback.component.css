@@ -1,0 +1,139 @@
+h3,h2,p,h1,button,th{
+    font-weight: 30px;
+    font-family: 'Pacifico', cursive;;
+  }
+  
+  .app {
+      width: 90%;
+      max-width: 500px;
+      
+    }
+    .top{
+      text-align: center;
+      margin-right: 55px;
+      padding-bottom: 10px;
+      font-family: 'Courier New', Courier, monospace;
+    }
+    .logo{
+      font-family: "museo-slab";  
+      font-size:20px;
+      text-align: center;
+      
+      
+     
+    }
+    .quest{
+      font-size:17px;
+      text-align: center;
+      color:black;
+      text-align: left;
+      font-family: 'Courier New', Courier, monospace;
+    
+  
+    }
+    
+    .register-item {
+        color: #ffff;
+        padding:25px 25px 0;
+        margin: 2px 5px 0;	
+        border-radius: 3px;
+    }
+    
+   textarea {
+      width: 50%;
+      opacity: 1;
+      padding: 12px 18px;
+   
+      margin: 8px 8px;
+      display: inline-block;
+      border: 1px solid #ccc; 
+      box-sizing: border-box;
+      box-shadow: 0px 3px 6px #00000029;
+      border-radius: 8px;
+    }
+    
+    .user:before {
+      content: '\f007';
+      font: 14px fontawesome;
+        color: #5b5b5b;
+    }
+    
+    .lock:before {
+      content: '\f023';
+      font: 14px fontawesome;
+        color: #5b5b5b;
+    }
+    #length{
+      width: 100%;
+    }
+   .form input[type="submit"] {
+      
+      border-radius: 0.50rem;
+      padding: 1rem;
+      color: #3A3F44; 
+    }
+    .drop{
+      width: 90%;
+      height: 50px;
+      font-size: medium;
+    }
+  
+    .hidden {
+      border: 0;
+      clip: rect(0 0 0 0);
+      height: 1px;
+      margin: -1px;
+      overflow: hidden;
+      padding: 0;
+      position: absolute;
+      width: 1px;
+    }
+    
+    .text--center {
+      text-align: center;
+    }
+    body {
+    
+    text-align: center;
+  
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    font-family: sans-serif;
+  }
+  h1,
+  p {
+    margin: 0;
+    padding: 0;
+    line-height: 1.5;
+  }
+  .container1 {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    .item {
+      width: 90px;
+      height: 90px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      user-select: none;
+    }
+    .radio {
+      display: none;
+    }
+    .radio ~ span {
+      font-size: 3rem;
+      filter: grayscale(100);
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    
+    .radio:checked ~ span {
+      filter: grayscale(0);
+      font-size: 4rem;
+    }
+    

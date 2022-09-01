@@ -1,0 +1,27 @@
+<div  class="card" style="width: 50%; margin-left: 25%; margin-bottom: 15em;">
+    <form  form #loginForm="ngForm" >
+      <div >
+        <h3 style="text-align: center;  font-family: 'Pacifico', cursive;; font-size: 20px;">TRACK TICKET</h3>
+       
+        <label for="tn">Ticket Id</label>
+        <input type="text" #tn="ngModel" placeholder="Enter your ticket number" id="tn" required [(ngModel)]=ticketId  name="tn" pattern="[0-9]*" maxlength="5">
+        <span *ngIf="tn.invalid && (tn.dirty||tn.touched)" style='color:rgb(8, 55, 56); '>
+          <span *ngIf="tn.errors['required']"> Ticket Id is required</span>
+          <span *ngIf="tn.errors['maxlength']">Ticket Id must of 5 digits</span> </span><br>
+  
+        <label for="email">Email</label>
+        <input type="text" #em="ngModel" placeholder="Enter Email" id="pwd" name="email" required pattern="[a-z0-9._%+-]+@[a-z0-9-]+\.[a-z]{2,4}$" [(ngModel)]=email> 
+        <div *ngIf="em.invalid && (em.dirty||em.touched)" style='color:rgb(8, 55, 56);' >
+          <div *ngIf="em.errors['required']">Email is required</div>
+          <div *ngIf="em.errors['pattern']">invalid email type</div>
+        </div>
+    
+        
+        <div class="">
+          <a style="text-decoration: none; color: white;" (click)="trackTicket()"><button type="submit" class="signupbtn">Track</button></a> 
+          <a style="text-decoration: none; color: white;" [routerLink]="['/cancelLink']"><button type="button" class="cancelbtn" >Cancel</button></a>
+        </div>
+       
+      </div>
+    </form>
+    </div>

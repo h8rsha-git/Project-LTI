@@ -1,0 +1,106 @@
+<div id="main_1">
+  <div class="card">
+    <h3
+      style="
+        text-align: center;
+        font-family: sans-serif;
+        font-size: 25px;
+        font-weight: bold;
+        color: #d01a1e;
+      "
+    >
+      {{ source }} - {{ destination }} on {{ dateOfJourney }}
+    </h3>
+  </div>
+
+  <div class="card">
+    <div>
+      <div>
+        <label style="margin-left: 3.7%"> Bus ID </label>
+        <label
+          style="
+            margin-right: 6%;
+            margin-left: 5.5%;
+            font-family: sans-serif;
+            font-weight: bold; ;
+          "
+        >
+          Departure</label
+        >
+        <label
+          style="margin-right: 7.2%; font-family: sans-serif; font-weight: bold"
+        >
+          Duration</label
+        >
+        <label
+          style="margin-right: 8.5%; font-family: sans-serif; font-weight: bold"
+        >
+          Arrival</label
+        >
+        <label
+          style="margin-right: 8.3%; font-family: sans-serif; font-weight: bold"
+        >
+          Fare</label
+        >
+        <label style="font-family: sans-serif; font-weight: bold">
+          Bus Type
+        </label>
+      </div>
+    </div>
+  </div>
+  <div class="card2">
+    <div *ngIf="busList === undefined; then noBus; else busListBlock"></div>
+
+    <ng-template #noBus>
+      <tr>
+        <td>No</td>
+        <td>Bus</td>
+        <td>Available</td>
+        <td>in this</td>
+        <td>route</td>
+        <td>!!</td>
+      </tr>
+    </ng-template>
+
+    <ng-template #busListBlock>
+      <table class="table">
+        <tr *ngFor="let b of busList">
+          <td>
+            <h3 style="font-family: sans-serif; font-weight: lighter">
+              {{ b.busId }}
+            </h3>
+          </td>
+          <td style="font-family: sans-serif; font-weight: lighter">
+            {{ b.timeOfDeparture }}
+          </td>
+          <td style="font-family: sans-serif; font-weight: lighter">
+            {{ b.duration }}
+          </td>
+          <td style="font-family: sans-serif; font-weight: lighter">
+            {{ b.timeOfArrival }}
+          </td>
+          <td style="font-family: sans-serif; font-weight: lighter">
+            ₹ {{ b.fare }}
+          </td>
+          <td style="font-family: sans-serif; font-weight: lighter">
+            {{ b.typeOfBus }}
+          </td>
+          <td>
+            <button
+              type="button"
+              style="
+                background-color: #d01a1e;
+                color: white;
+                font-weight: lighter;
+              "
+              (click)="busSelect(b.busId)"
+            >
+              View Seats
+            </button>
+          </td>
+        </tr>
+      </table>
+    </ng-template>
+  </div>
+  <div style="margin-top: 200px"></div>
+</div>

@@ -1,0 +1,198 @@
+h2,
+p,
+h1,
+button,
+th {
+  font-family: sans-serif;
+  font-size: 20px;
+}
+
+td {
+  font-family: sans-serif;
+  font-size: 18px;
+}
+
+.ticketContainer {
+  padding-left: 10%;
+  padding-right: 10%;
+  padding-top: 5%;
+  padding-bottom: 5%;
+}
+
+.ticketContainer p {
+  float: right;
+}
+
+.ticketContainer hr {
+  border: 2px solid rgb(134, 35, 5);
+}
+
+.topBar {
+  background-color: rgb(139, 218, 207);
+  border-radius: 10px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-left: 15px;
+  padding-right: 20px;
+  width: 100%;
+  margin: auto;
+  font-size: 1.3em;
+}
+
+.topBar th {
+  width: 100%;
+  padding-left: 80px;
+  padding-right: 80px;
+  overflow: hidden;
+  /* border: 1px solid black; */
+}
+
+.ticketContainer .logo {
+  float: left;
+}
+
+.passengerDiv {
+  background-color: rgb(105, 184, 180);
+  padding: 30px;
+  width: 97%;
+  margin: auto;
+  margin-top: 10px;
+  border-radius: 10px;
+}
+
+table {
+  /* border: 1px solid black; */
+  table-layout: fixed;
+  width: 100%;
+  text-align: center;
+}
+
+.titlePassenger th,
+td {
+  width: 350px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  overflow: hidden;
+}
+
+.passengerDiv .titlePassenger {
+  background-color: rgb(232, 241, 241);
+  border-radius: 10px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  font-size: medium;
+  width: 100%;
+  margin: auto;
+}
+
+.passengerDiv .listPassenger {
+  background-color: rgb(208, 235, 229);
+  border-radius: 10px;
+  margin-top: 5px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-size: medium;
+  width: 100%;
+  margin: auto;
+  margin-top: 10px;
+}
+
+.busInfoBar {
+  background-color: rgb(139, 218, 207);
+  border-radius: 10px;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  font-size: medium;
+  margin-top: 20px;
+  width: 100%;
+}
+
+.jouneyInfoBar {
+  background-color: rgb(139, 218, 207);
+  margin-top: 20px;
+  border-radius: 10px;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  font-size: medium;
+  width: 100%;
+}
+
+#downloadPdf {
+  text-align: right;
+}
+
+.button {
+  border-radius: 4px;
+  background-color: rgb(11, 89, 92);
+  color: white;
+  padding: 14px 20px;
+  margin: 8px;
+  border: none;
+  cursor: pointer;
+  width: 10%;
+  opacity: 0.9;
+  float: right;
+}
+
+/* The Modal (background) */
+
+.modal {
+  display: none;
+  /* Hidden by default */
+  position: fixed;
+  /* Stay in place */
+  z-index: 1;
+  /* Sit on top */
+  padding-top: 60px;
+  /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%;
+  /* Full width */
+  height: 100%;
+  /* Full height */
+  overflow: auto;
+  /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0);
+  /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4);
+  /* Black w/ opacity */
+}
+
+/* Modal Content */
+
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 50%;
+}
+
+/* The Close Button */
+
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* button:disabled, */
+
+.button:disabled {
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
+}
